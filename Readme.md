@@ -1,3 +1,9 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [CustomCommand.cs](./CS/SaveDocument/CustomCommand.cs) (VB: [CustomCommand.vb](./VB/SaveDocument/CustomCommand.vb))
+* [Form1.cs](./CS/SaveDocument/Form1.cs) (VB: [Form1.vb](./VB/SaveDocument/Form1.vb))
+<!-- default file list end -->
 # How to save a document in the RichEdit control
 
 
