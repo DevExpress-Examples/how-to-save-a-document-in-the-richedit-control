@@ -2,10 +2,11 @@ Imports DevExpress.XtraRichEdit.Services
 Imports DevExpress.XtraRichEdit
 Imports DevExpress.XtraRichEdit.Commands
 Imports System.Windows.Forms
+Imports DevExpress.XtraEditors
 
 Namespace SaveDocumentSample
 
-'#Region "#savecommand"
+    '#Region "#savecommand"
     Public Class CustomRichEditCommandFactoryService
         Implements IRichEditCommandFactoryService
 
@@ -34,13 +35,20 @@ Namespace SaveDocumentSample
         End Sub
 
         Protected Overrides Sub ExecuteCore()
-            Dim dialog As SaveFileDialog = New SaveFileDialog With {.Filter = "Rich Text Format Files (*.rtf)|*.rtf|All Files (*.*)|*.*", .FileName = "SavedDocument.rtf", .RestoreDirectory = True, .CheckFileExists = False, .CheckPathExists = True, .OverwritePrompt = True, .DereferenceLinks = True, .ValidateNames = True, .AddExtension = False, .FilterIndex = 1}
-            dialog.InitialDirectory = "C:\Temp"
-            If dialog.ShowDialog() = DialogResult.OK Then
-                CType(Control, RichEditControl).SaveDocument(dialog.FileName, DocumentFormat.Rtf)
-            End If
-        'base.ExecuteCore();
+            Using dialog As XtraSaveFileDialog = New XtraSaveFileDialog With {
+                .Filter = "Rich Text Format Files (*.rtf)|*.rtf|All Files (*.*)|*.*",
+                .FileName = "SavedDocument.rtf", .RestoreDirectory = True,
+                .CheckFileExists = False, .CheckPathExists = True,
+                .OverwritePrompt = True, .DereferenceLinks = True,
+                .ValidateNames = True, .AddExtension = False,
+                .FilterIndex = 1}
+                dialog.InitialDirectory = "C:\Temp"
+                If dialog.ShowDialog() = DialogResult.OK Then
+                    CType(Control, RichEditControl).SaveDocument(dialog.FileName, DocumentFormat.Rtf)
+                End If
+            End Using
+            'base.ExecuteCore();
         End Sub
     End Class
-'#End Region  ' #savecommand
+    '#End Region  ' #savecommand
 End Namespace

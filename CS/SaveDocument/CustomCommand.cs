@@ -5,6 +5,7 @@ using DevExpress.XtraRichEdit.Services;
 using DevExpress.XtraRichEdit;
 using DevExpress.XtraRichEdit.Commands;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 
 namespace SaveDocumentSample
 {
@@ -36,23 +37,23 @@ namespace SaveDocumentSample
 
         protected override void ExecuteCore()
         {
-            SaveFileDialog dialog = new SaveFileDialog
+            using (XtraSaveFileDialog dialog = new XtraSaveFileDialog())
             {
-                Filter = "Rich Text Format Files (*.rtf)|*.rtf|All Files (*.*)|*.*",
-                FileName = "SavedDocument.rtf",
-                RestoreDirectory = true,
-                CheckFileExists = false,
-                CheckPathExists = true,
-                OverwritePrompt = true,
-                DereferenceLinks = true,
-                ValidateNames = true,
-                AddExtension = false,
-                FilterIndex = 1
-            };
-            dialog.InitialDirectory = "C:\\Temp";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                ((RichEditControl)this.Control).SaveDocument(dialog.FileName, DocumentFormat.Rtf);
+                dialog.Filter = "Rich Text Format Files (*.rtf)|*.rtf|All Files (*.*)|*.*";
+                dialog.FileName = "SavedDocument.rtf";
+                dialog.RestoreDirectory = true;
+                dialog.CheckFileExists = false;
+                dialog.CheckPathExists = true;
+                dialog.OverwritePrompt = true;
+                dialog.DereferenceLinks = true;
+                dialog.ValidateNames = true;
+                dialog.AddExtension = false;
+                dialog.FilterIndex = 1;
+                dialog.InitialDirectory = "C:\\Temp";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ((RichEditControl)this.Control).SaveDocument(dialog.FileName, DocumentFormat.Rtf);
+                }
             }
             //base.ExecuteCore();
         }
