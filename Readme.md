@@ -5,7 +5,7 @@
 
 # How to: Save a Document in the RichEditControl
 
-This example illustrates how a document can be saved in the RichEditControl and customize this process.
+This example illustrates how to save a document in the RichEditControl and how to customize this process.
 
 ![application image](./media/image.png)
 
