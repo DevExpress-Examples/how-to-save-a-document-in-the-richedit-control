@@ -11,9 +11,9 @@ This example illustrates how to save a document in the RichEditControl and how t
 
 ## Implementation Specifics
 
-The [RichEditControl.BeforeExport](https://docs.devexpress.com/WindowsForms/DevExpress.XtraRichEdit.RichEditControl.BeforeExport) event in handled to reduce the size of an RTF file before it is saved. When you click the **Save Document to File** button, a warning message appears. If you click **Yes**, the [RtfDocumentExporterOptions](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.Export.RtfDocumentExporterOptions) properties are specified to reduce file size.
+The [RichEditControl.BeforeExport](https://docs.devexpress.com/WindowsForms/DevExpress.XtraRichEdit.RichEditControl.BeforeExport) event is handled to reduce the size of an RTF file before it is saved. A warning message appears when you click the **Save Document to File** button. If you click **Yes**, the [RtfDocumentExporterOptions](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.Export.RtfDocumentExporterOptions) properties are specified to reduce file size.
 
-A custom [SaveDocumentAsCommand](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.Commands.SaveDocumentAsCommand) command is used to disable other formats but RTF in the dialog window.
+A custom [SaveDocumentAsCommand](https://docs.devexpress.com/OfficeFileAPI/DevExpress.XtraRichEdit.Commands.SaveDocumentAsCommand) command is used to customize the list of available formats in the dialog window.
 
 ## Files to Review
 
